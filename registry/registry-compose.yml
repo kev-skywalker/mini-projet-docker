@@ -9,7 +9,6 @@ services:
       - DELETE_IMAGES=true
       - REGISTRY_URL=http://rgt-pozos:5000
       - CATALOG_ELEMENTS_LIMIT=1000
-
 #    env_file:
 #      - .env
     container_name: registry-pozos_UI
