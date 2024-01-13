@@ -1,0 +1,28 @@
+version: '2'
+services:
+  registry-ui:
+    image: joxit/docker-registry-ui:static
+    ports:
+      - 4002:80
+    environment:
+      - REGISTRY_TITLE=Docker Registry UI
+      - DELETE_IMAGES=true
+      - REGISTRY_URL=http://rgt-pozos:5000
+      - CATALOG_ELEMENTS_LIMIT=1000
+
+#    env_file:
+#      - .env
+    container_name: registry-pozos_UI
+    networks:
+      - registry-network
+  registry:
+    image: registry:2
+    ports:
+      - 2000:5000
+    container_name: rgt-pozos
+    networks:
+      - registry-network
+networks:
+  registry-network:
+    external:
+      name: registry-network
